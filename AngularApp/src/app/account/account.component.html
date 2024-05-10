@@ -1,0 +1,58 @@
+<div class="container-fluid overflow-hidden" style="background-color: rgb(70, 255, 178);">
+  <div class="navbar nav overflow-hidden">
+      <div class="navbar-brand h3">Game Account Management</div>
+  </div>
+</div>
+<div class="container-fluid mt-4" id="whole">
+  <div class="col">
+      <div class="card">
+          <h4 class="card-header">Add Account</h4>
+          <form class="p-2" #accountForm="ngForm" (ngSubmit)="onSubmit(accountForm)" style="text-align: center;">
+              <input type="hidden" name="_id" [(ngModel)]="selectedAccount._id">
+              <input class="form-control mt-2 mb-2" type="text" name="userId" placeholder="Enter UserId" [(ngModel)]="selectedAccount.userId" required style="width: 300px;" minlength="5">
+              <div class="input-group mb-2" style="width: 200px;">
+                  <div class="input-group-prepend"><div class="input-group-text">#</div></div>
+                  <input class="form-control" type="text" name="server" placeholder="Enter Server" [(ngModel)]="selectedAccount.server" required minlength="4" maxlength="5">
+              </div>
+              <select name="status" id="status" class="form-control mb-4" style="width: 200px;" [(ngModel)]="selectedAccount.status" required>
+                  <option value="" selected disabled>Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Deactivated</option>
+                  <option value="Pending">Banned</option>
+              </select>
+          
+              <button type="submit" class="btn btn-primary">Add</button>
+              <button type="reset" class="btn btn-secondary" (click)="resetForm(accountForm)">Reset</button>
+          </form>
+          
+      </div>
+  </div>
+
+  <div class="col">
+      <div class="row">
+          <div class="col-md-12">
+              <table class="table table-striped">
+                  <thead style="position: sticky; top: -20px; background-color: white;">
+                      <tr>
+                          <th>UserId</th>
+                          <th>Server</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let account of accounts">
+                          <td>{{ account.userId }}</td>
+                          <td>{{ account.server }}</td>
+                          <td>{{ account.status }}</td>
+                          <td>
+                              <button type="button" class="btn btn-primary" (click)="onEdit(account)">Edit</button>
+                              <button type="button" class="btn btn-danger" (click)="onDelete(account._id ?? '', accountForm)">Delete</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

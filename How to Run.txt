@@ -1,0 +1,13 @@
+<Notice> MongoDB used in this Folder is connected on Online Server MongoDB(No need to change any Code)
+
+Step 1: Open terminal in VS connected
+Step 2: Input >>        npx nodemon index.js
+
+(Step 2 will start the backend)
+
+Step 3: Right click on the AngularApp folder and click open in integrated terminal
+Step 4: Inpute >>       ng serve
+
+(Step 4 will run the angular Front End)
+
+Wait for the Step 4 to finish building ang copy the hosted link and paste it in browser
